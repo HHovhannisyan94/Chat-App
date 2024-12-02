@@ -13,6 +13,7 @@ Screenshots
 
 Used technologies:
 <ul>
+  <li>MVVM with Clean Architecture</li>
   <li>Ktor</li>
   <li>Koin DI</li>
   <li>Flow</li>
