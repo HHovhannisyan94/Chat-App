@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.chat.common.navigateTo
+import com.example.chat.presentation.common.AnnotatedClickableText
 import com.example.chat.presentation.common.ErrorText
 import com.example.chat.presentation.common.CircularProgress
 import com.example.chat.presentation.common.Routes
@@ -135,43 +136,13 @@ fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = ko
                 }
             }
 
-            val annotatedText = buildAnnotatedString {
-                withStyle(style = SpanStyle(color = Color.Gray)) { append("Don't have account? ") }
-                pushStringAnnotation(
-                    tag = "SignUp",
-                    annotation = "SignUp"
-                )
+            AnnotatedClickableText(
+                text = "Don't have account? ",
+                clickableText = "Sign Up",
+                route = Routes.SignUp.route,
+                navController = navController
+            )
 
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary)) {
-                    append("Sign Up")
-                }
-
-                pop()
-            }
-
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp),
-                contentAlignment = Alignment.BottomCenter
-            ) {
-                Text(
-                    text = annotatedText,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.clickable {
-                        val signUpTag = "SignUp"
-                        val annotations = annotatedText.getStringAnnotations(
-                            tag = signUpTag,
-                            start = 0,
-                            end = annotatedText.length
-                        )
-                        annotations.firstOrNull()?.let {
-                            navigateTo(navController, Routes.SignUp.route)
-                        }
-                    }
-                )
-            }
 
         }
 

@@ -36,8 +36,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.chat.common.navigateTo
+import com.example.chat.presentation.common.AnnotatedClickableText
 import com.example.chat.presentation.common.ErrorText
 import com.example.chat.presentation.common.CircularProgress
 import com.example.chat.presentation.common.Routes
@@ -46,7 +48,7 @@ import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun SignUpScreen(navController: NavController, viewModel: SignupViewModel = koinViewModel()) {
+fun SignUpScreen(navController: NavHostController, viewModel: SignupViewModel = koinViewModel()) {
 
     val signupState = viewModel.signupState.value
 
@@ -169,40 +171,12 @@ fun SignUpScreen(navController: NavController, viewModel: SignupViewModel = koin
                 }
             }
 
-            val annotatedText = buildAnnotatedString {
-                withStyle(style = SpanStyle(color = Color.Gray)) { append("Already have account? ") }
-
-                pushStringAnnotation(
-                    tag = "Login",
-                    annotation = "Login"
-                )
-
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary)) {
-                    append("Login")
-                }
-
-                pop()
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp),
-                contentAlignment = Alignment.BottomCenter
-            ) {
-                Text(
-                    text = annotatedText,
-                    modifier = Modifier.clickable {
-                        annotatedText.getStringAnnotations(
-                            tag = "Login",
-                            start = 0,
-                            end = annotatedText.length
-                        ).firstOrNull()?.let {
-                            navController.popBackStack()
-                        }
-                    }
-                )
-            }
+            AnnotatedClickableText(
+                text = "Already have account? ",
+                clickableText = "Login",
+                onClick = { navController.popBackStack() },
+                navController = navController
+            )
         }
     }
 
