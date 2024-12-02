@@ -15,6 +15,7 @@ Used technologies:
 <ul>
   <li>Ktor</li>
   <li>Koin DI</li>
+  <li>Flow</li>
   <li>Jetpack Compose</li>
 </ul> 
 
