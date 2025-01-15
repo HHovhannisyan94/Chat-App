@@ -4,7 +4,7 @@ Screenshots
 <br>
 ![photo_2024-12-01_22-41-56](https://github.com/user-attachments/assets/42f1b7d2-9b8b-4cc7-b9a8-af6aec717c3f)
 <br>
-![photo_2024-12-01_22-48-13](https://github.com/user-attachments/assets/4f2bff01-56fd-400a-8a9d-073043187714)
+![photo_2025-01-15_15-09-15](https://github.com/user-attachments/assets/2fe6ac75-0edf-4aea-b4dd-c1dedf34f666)
 <br>
 ![photo_2024-12-01_22-41-59](https://github.com/user-attachments/assets/2d4e653c-765f-41e0-8ca5-a400678e055c)
 <br>
